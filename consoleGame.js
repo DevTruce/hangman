@@ -119,6 +119,7 @@ const dev = function (message) {
 };
 
 //// GAME START MESSAGE
+cl("Developer: Truce Ramcharitar");
 cl(`888                                                           
 888                                                           
 888                                                           
@@ -139,11 +140,11 @@ for (let i = 0; i < randomWord.length; i++) {
 /////////////////////////////////////////////////
 //// GAME LOGIC
 while (incorrectGuesses < 6) {
-  dev(`Generated Word: ${randomWord}`); // DEBUGGING
-  dev(`Correct Guesses: ${correctGuesses}`); // DEBUGGING
-  dev(`Incorrect Guesses: ${incorrectGuesses}`); // DEBUGGING
-  dev(`Previous Guesses: ${previousGuesses}`); // DEBUGGING
-  dev(`User Guess: ${userGuess}`); // DEBUGGING
+  //   dev(`Generated Word: ${randomWord}`); // DEBUGGING
+  //   dev(`Correct Guesses: ${correctGuesses}`); // DEBUGGING
+  //   dev(`Incorrect Guesses: ${incorrectGuesses}`); // DEBUGGING
+  //   dev(`Previous Guesses: ${previousGuesses}`); // DEBUGGING
+  //   dev(`User Guess: ${userGuess}`); // DEBUGGING
 
   //// GAME DISPLAYS
   cl(hangmanDisplay[incorrectGuesses]); // display the hangman stage
@@ -188,7 +189,7 @@ while (incorrectGuesses < 6) {
     } else if (incorrectGuesses === 6) {
       cl(hangmanDisplay[incorrectGuesses]);
       cl("--------------------------------");
-      cl("🆘 You Lost!");
+      cl(`🆘 You Lost! The Answer was: ${randomWord}`);
       break;
     }
   }
