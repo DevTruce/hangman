@@ -13,23 +13,23 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/DevTruce/repo_name">
+  <a href="https://github.com/DevTruce/hangman">
     <img src="src/imgs/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">hangman</h3>
 
   <p align="center">
-    project_description
+    hangman game
     <br />
-    <a href="https://github.com/DevTruce/repo_name" target="_blank"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/DevTruce/hangman" target="_blank"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://devtruce.github.io/repo_name/" target="_blank">View Demo</a>
+    <a href="https://devtruce.github.io/hangman/" target="_blank">View Demo</a>
     ·
-    <a href="https://github.com/DevTruce/repo_name/issues" target="_blank">Report Bug</a>
+    <a href="https://github.com/DevTruce/hangman/issues" target="_blank">Report Bug</a>
     ·
-    <a href="https://github.com/DevTruce/repo_name/issues" target="_blank">Request Feature</a>
+    <a href="https://github.com/DevTruce/hangman/issues" target="_blank">Request Feature</a>
   </p>
 </div>
 
@@ -43,19 +43,11 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
+    
   </ol>
 </details>
 
@@ -63,94 +55,16 @@
 
 ## About The Project
 
+The classic hangman game! I had a blast building this project and I came across several challenges that in the end made me a stronger developer! This has been my favorite project so far and I am excited to make it even better in the future! One of the main challenges I faced during this project was how to implement the blank slots for the random word generated as well as how to update them when the user guessed a correct letter. After some research along with trial and error I managed to solve both issues! For the first issue I simply looped the length of the generated word and created a new div, assigned it a class and appended it to the necessary element each iteration. In doing this I was able to solve the blank slot issues! along with some css the style it accordingly of course. For the second issue I solved it in a similar manner by simply looping the length of the generated word and checking if the user guess and === to the generated word in the current index, this allowed me to compare the user guess directly to each letter in the generated word. After that I assigned the userguessed letter to the corrisponding div element using the index to ensure that the letter would be displayed in the correct position. Overall this project has been a great challenge and learning experience! I plan to refactor the code and clean up the project soon because I know I can do better! I just wanted to get this project working before focusing on producing the best code I can. I also plan to add a feature that will give you the option to play this along OR with a friend! The feature will simply allow one player to create the random word to then be guessed by the other!
+
 [![Product Name Screen Shot][product-screenshot]](product-link)
-
-Here's a blank template to get started:
-
-- Do a search and replace all with your text editor for the following: `repo_name`, `project_title`, `project_description`,
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
 
 - [![HTML5][html5-icon]][html5-link]
 - [![CSS3][css3-icon]][css3-link]
 - [![SASS][sass-icon]][sass-link]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- GETTING STARTED -->
-
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-- npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Clone the repo
-   ```sh
-   git clone https://github.com/DevTruce/repo_name.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
-3. Dev environment
-   ```sh
-   npm run start
-   ```
-4. Build package
-   ```sh
-   npm run build
-   ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- USAGE EXAMPLES -->
-
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example-icon)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ROADMAP -->
-
-## Roadmap
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-  - [ ] Nested Feature
-
-See the [open issues](https://github.com/DevTruce/repo_name/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- CONTRIBUTING -->
-
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+- [![JAVASCRIPT][JAVASCRIPT-icon]][JAVASCRIPT-link]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -185,24 +99,24 @@ Discord: [Xzypher#9999]()
 <!-- ## GitHub ##-->
 <!-- links -->
 
-[contributors-link]: https://github.com/DevTruce/repo_name/graphs/contributors
-[forks-link]: https://github.com/DevTruce/repo_name/network/members
-[stars-link]: https://github.com/DevTruce/repo_name/stargazers
-[issues-link]: https://github.com/DevTruce/repo_name/issues
-[license-link]: https://github.com/DevTruce/repo_name/blob/master/LICENSE.txt
+[contributors-link]: https://github.com/DevTruce/hangman/graphs/contributors
+[forks-link]: https://github.com/DevTruce/hangman/network/members
+[stars-link]: https://github.com/DevTruce/hangman/stargazers
+[issues-link]: https://github.com/DevTruce/hangman/issues
+[license-link]: https://github.com/DevTruce/hangman/blob/master/LICENSE.txt
 
 <!-- icons -->
 
-[contributors-icon]: https://img.shields.io/github/contributors/DevTruce/repo_name.svg?style=for-the-badge
-[forks-icon]: https://img.shields.io/github/forks/DevTruce/repo_name.svg?style=for-the-badge
-[stars-icon]: https://img.shields.io/github/stars/DevTruce/repo_name.svg?style=for-the-badge
-[issues-icon]: https://img.shields.io/github/issues/DevTruce/repo_name.svg?style=for-the-badge
-[license-icon]: https://img.shields.io/github/license/DevTruce/repo_name.svg?style=for-the-badge
+[contributors-icon]: https://img.shields.io/github/contributors/DevTruce/hangman.svg?style=for-the-badge
+[forks-icon]: https://img.shields.io/github/forks/DevTruce/hangman.svg?style=for-the-badge
+[stars-icon]: https://img.shields.io/github/stars/DevTruce/hangman.svg?style=for-the-badge
+[issues-icon]: https://img.shields.io/github/issues/DevTruce/hangman.svg?style=for-the-badge
+[license-icon]: https://img.shields.io/github/license/DevTruce/hangman.svg?style=for-the-badge
 
 <!-- ## Project ## -->
 
-[product-screenshot]: src/imgs/project-view.png
-[product-link]: https://devtruce.github.io/repo_name/
+[product-screenshot]: src/imgs/Screenshot.png
+[product-link]: https://devtruce.github.io/hangman/
 
 <!-- ## Tech & Tools ## -->
 <!-- links -->
