@@ -110,6 +110,7 @@ const wordList = [
   "zoo",
   "zombie",
   "zooming",
+  "zoom",
 ];
 
 let gameIsOn = true;
