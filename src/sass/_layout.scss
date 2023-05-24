@@ -1,0 +1,324 @@
+main {
+  //   border: 2px solid white;
+  height: 80vh;
+  width: 50vw;
+}
+
+.hidden {
+  display: none !important;
+}
+
+//////////////////////////////////////////////////
+//// PAGE HEADER
+.header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__heading {
+    color: $colorGreen;
+  }
+
+  &__paragraph {
+    text-transform: uppercase;
+    margin-top: 1rem;
+  }
+}
+
+//////////////////////////////////////////////////
+//// HANGMAN GAME DISPLAY
+.display {
+  display: flex;
+  margin-top: 3rem;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 80%;
+
+  &__word {
+    // border: 2px solid white;
+    width: 60%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      //   justify-content: space-evenly;
+      //   margin-left: 1rem;
+      margin: 3rem 0 2rem 0;
+    }
+
+    &-blanks {
+      border-bottom: 2px solid $colorGreen;
+      //   height: 0.15rem;
+      width: 1rem;
+      margin-left: 0.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__guess {
+    width: 2rem;
+    height: 1rem;
+
+    &-box {
+      display: flex;
+      //   transform: translateY(5rem);
+    }
+
+    &-box2 {
+      display: flex;
+      flex-direction: column;
+      //   margin-bottom: 0.5rem;
+    }
+
+    &-guess-paragraph {
+    }
+
+    &-guess-input {
+    }
+  }
+
+  &__hangman {
+    // border: 2px solid white;
+    width: 40%;
+    height: 100%;
+
+    position: relative;
+  }
+
+  &__previous {
+    font-weight: 900;
+    letter-spacing: 0.2rem;
+    align-self: center;
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+  }
+}
+
+//////////////////////////////////////////////////
+//// HANGMAN STAGES
+
+// base
+.base {
+  width: 8rem;
+  height: 0.4rem;
+  background-color: $colorWhite;
+
+  position: absolute;
+  bottom: 1rem;
+  left: 5%;
+}
+
+.pole {
+  width: 0.5rem;
+  height: 20rem;
+  background-color: $colorWhite;
+
+  position: absolute;
+  bottom: -100%;
+  left: 50%;
+  transform: translate(-50%, -2.5%);
+}
+
+.top {
+  width: 6rem;
+  height: 0.5rem;
+  background-color: $colorWhite;
+
+  position: absolute;
+  top: -20rem;
+  left: 47%;
+}
+
+.drop {
+  width: 0.4rem;
+  height: 3rem;
+  background-color: $colorWhite;
+
+  position: absolute;
+  top: -20rem;
+  left: 120%;
+}
+
+// stage 1
+.stage1 {
+  outline: 0.3rem solid $colorWhite;
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+
+  position: absolute;
+  top: -16.8rem;
+  left: 102%;
+}
+// stage 2
+.stage2 {
+  background-color: $colorWhite;
+  height: 7rem;
+  width: 0.3rem;
+
+  position: absolute;
+  top: -13.5rem;
+  left: 118%;
+}
+// stage 3
+.stage3 {
+  background-color: $colorWhite;
+  height: 4rem;
+  width: 0.3rem;
+
+  position: absolute;
+  top: -14rem;
+  left: 99%;
+
+  transform: rotate(130deg);
+}
+// stage 4
+.stage4 {
+  background-color: $colorWhite;
+  height: 4rem;
+  width: 0.3rem;
+
+  position: absolute;
+  top: -14rem;
+  left: 138%;
+
+  transform: rotate(230deg);
+}
+// stage 5
+.stage5 {
+  background-color: $colorWhite;
+  height: 4rem;
+  width: 0.3rem;
+
+  position: absolute;
+  top: -7.5rem;
+  left: 97%;
+
+  transform: rotate(60deg);
+}
+// stage 6
+.stage6 {
+  background-color: $colorWhite;
+  height: 4rem;
+  width: 0.3rem;
+
+  position: absolute;
+  top: -7.3rem;
+  left: 136%;
+
+  transform: rotate(130deg);
+}
+
+//////////////////////////////////////////////////
+//// BUTTONS
+
+.btn {
+  width: 15rem;
+  height: 2rem;
+  border: 0.1rem solid $colorWhite;
+  background-color: $colorGreen;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  //   transition: all 500ms;
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  &:hover,
+  &:focus {
+    width: 15.2rem;
+    height: 2.2rem;
+    background-color: $colorGrey;
+    color: $colorGreen;
+    cursor: pointer;
+    animation: scaleUp 500ms linear forwards;
+  }
+  @keyframes scaleUp {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.02);
+    }
+  }
+
+  &:active {
+    animation: scaleDown 500ms linear forwards;
+  }
+  @keyframes scaleDown {
+    0% {
+      transform: scale(1.02);
+    }
+    100% {
+      transform: scale(0.98);
+    }
+  }
+}
+
+//////////////////////////////////////////////////
+//// OVERLAY
+.popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  color: $colorGrey;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-color: white;
+  padding: 6rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & li {
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &-exit {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 3rem;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+    }
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}

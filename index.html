@@ -4,10 +4,70 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/src/css/style.css" />
     <title>Hangman Game</title>
   </head>
-  <body></body>
+  <body>
+    <main>
+      <header class="header">
+        <h1 class="header__heading">Hangman Game</h1>
+        <p class="header__paragraph">
+          Find the hidden word by guessing one letter at a time
+        </p>
+      </header>
+      <div class="display">
+        <div class="display__hangman">
+          <div class="base">
+            <div class="pole"></div>
+            <div class="top"></div>
+            <div class="drop"></div>
+            <div class="stage1 hidden"></div>
+            <div class="stage2 hidden"></div>
+            <div class="stage3 hidden"></div>
+            <div class="stage4 hidden"></div>
+            <div class="stage5 hidden"></div>
+            <div class="stage6 hidden"></div>
+          </div>
+        </div>
+        <div class="display__word">
+          <div class="display__guess-box">
+            <label for="display__guess-input" class="display__guess-paragraph"
+              >Guess a Letter: &nbsp;</label
+            >
+            <input id="display__guess-input" type="text" />
+          </div>
+
+          <div class="display__guess-box2">
+            <div class="display__word-box"></div>
+            <div class="display__previous">Previous:</div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <aside>
+      <div class="btn btn--restart-game">RESTART GAME</div>
+      <div class="btn btn--game-info">GAME INFO</div>
+      <div class="popup popup-game-info hidden">
+        <ol>
+          <li>Start guessing letters one at a time.</li>
+          <li>
+            If your guess is a correct letter then we will fill in the blank
+          </li>
+          <li>
+            If your guess is incorrect then we will draw the next stage of the
+            hangman
+          </li>
+          <li>Restart the game using the "Restart Game" Button</li>
+        </ol>
+        <div class="popup-exit">&times;</div>
+      </div>
+      <div class="overlay hidden"></div>
+    </aside>
+  </body>
   <!-- web version (to be made) -->
+  <script src="/src/javascript/script.js"></script>
+
   <!-- console version -->
-  <script src="consoleGame.js"></script>
+  <!-- <script src="/src/javascript/consoleGame.js"></script> -->
 </html>

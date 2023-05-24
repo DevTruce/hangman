@@ -1,0 +1,25 @@
+//////////////////////////////////////////////////
+// RESETS
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  box-sizing: inherit;
+}
+
+body {
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  color: $colorWhite;
+  background-color: $colorGrey;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
