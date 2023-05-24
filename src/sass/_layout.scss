@@ -227,12 +227,7 @@ main {
   justify-content: center;
   text-transform: uppercase;
   font-weight: 700;
-  //   transition: all 500ms;
-
-  &:not(:last-child) {
-    margin-bottom: 1rem;
-  }
-
+  margin-bottom: 0.5rem;
   &:hover,
   &:focus {
     width: 15.2rem;
@@ -247,7 +242,7 @@ main {
       transform: scale(1);
     }
     100% {
-      transform: scale(1.02);
+      transform: scale(1.01);
     }
   }
 
@@ -256,7 +251,7 @@ main {
   }
   @keyframes scaleDown {
     0% {
-      transform: scale(1.02);
+      transform: scale(1.01);
     }
     100% {
       transform: scale(0.98);
@@ -275,7 +270,7 @@ main {
   color: $colorGrey;
   text-transform: uppercase;
   font-weight: 700;
-  background-color: white;
+  background-color: $colorGrey;
   padding: 6rem;
   border-radius: 5px;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
@@ -313,4 +308,42 @@ main {
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(3px);
   z-index: 5;
+}
+
+//////////////////////////////////////////////////
+//// GAME HELPERS
+.game-mode-pick {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: $colorGrey;
+  background-color: $colorGrey;
+  padding: 6rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.word-list-pick {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: $colorGrey;
+  background-color: $colorGrey;
+  padding: 6rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

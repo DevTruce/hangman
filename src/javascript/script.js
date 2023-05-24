@@ -37,14 +37,65 @@ let randomWord,
   incorrectGuesses,
   correctGuesses,
   newBlanks,
-  addBlankWords;
+  addBlankWords,
+  isTwoPlayer;
 
 /////////////////////////////////////////////////
-//// RESET & INITIALIZE GAME
+//// RESET & INITIALIZE GAME (1 PLAYER)
 const init = function () {
   //// RESET GAME VARIABLES
   randomWord = wordList[Math.trunc(Math.random() * wordList.length)]; // generate random word
   gameIsOn = true;
+  answerDisplay = [];
+  userGuess = "";
+  previousGuesses = [];
+  incorrectGuesses = 0;
+  correctGuesses = 0;
+  newBlanks = "";
+
+  //// RESET HANGMAN STAGE COLORS
+  base.style.backgroundColor = "";
+  pole.style.backgroundColor = "";
+  topp.style.backgroundColor = "";
+  drop.style.backgroundColor = "";
+  stage1.style.outlineColor = "";
+  stage2.style.backgroundColor = "";
+  stage3.style.backgroundColor = "";
+  stage4.style.backgroundColor = "";
+  stage5.style.backgroundColor = "";
+  stage6.style.backgroundColor = "";
+
+  //// RESET HANGMAN STAGES
+  for (let i = 1; i < 7; i++) {
+    if (
+      document.querySelector(`.stage${i}`).classList.contains("hidden") !=
+      "hidden"
+    ) {
+      document.querySelector(`.stage${i}`).classList.add("hidden");
+    }
+  }
+
+  //// RESET PREVIOUS GUESSES
+  displayPrevious.textContent = `Previous: `;
+
+  //// CREATE BLANKS TO RANDOM WORD
+  for (let i = 0; i < randomWord.length; i++) {
+    newBlanks = document.createElement("div"); // create div
+    newBlanks.classList.add("display__word-blanks"); // attach class to div
+    document.querySelector(".display__word-box").appendChild(newBlanks); // assign div to a parent element
+  }
+
+  console.clear(); // DEBUGGING
+  cw(`Random Word: ${randomWord}`); // DEBUGGING
+};
+
+/////////////////////////////////////////////////
+//// RESET & INITIALIZE GAME (1 PLAYER)
+const twoPlayerInit = function () {
+  //// RESET GAME VARIABLES
+  randomWord = prompt("Input Your Secret Word: ").toLowerCase(); // generate random word
+  gameIsOn = true;
+  isTwoPlayer = true;
   answerDisplay = [];
   userGuess = "";
   previousGuesses = [];
@@ -217,7 +268,11 @@ const restartGame = function () {
       displayWordBox.removeChild(removeBlanks); // remove div from a parent element
     }
     //// EXECUE INIT FUNCTION (RESET GAME VARIABLES & STATE)
-    init();
+    if (isTwoPlayer) {
+      twoPlayerInit();
+    } else {
+      init();
+    }
   });
 };
 
@@ -260,7 +315,36 @@ const gameInfo = function () {
 
 /////////////////////////////////////////////////
 //// EXECUTE THE GAME FUNCTIONS
-init();
-gameLoop();
-restartGame();
-gameInfo();
+// init();
+// gameLoop();
+// restartGame();
+// gameInfo();
+
+// check if player clicks 1 or 2
+const gameMode = function () {
+  const onePlayer = document.querySelector(".game-mode-pick--1player");
+
+  onePlayer.addEventListener("click", function () {
+    console.log("ONE PLAYER GAME MODE");
+
+    document.querySelector(".game-mode-pick").classList.add("hidden");
+    init();
+    gameLoop();
+    restartGame();
+    gameInfo();
+  });
+
+  const twoPlayer = document.querySelector(".game-mode-pick--2player");
+  twoPlayer.addEventListener("click", function () {
+    console.log("TWO PLAYER GAME MODE");
+
+    document.querySelector(".game-mode-pick").classList.add("hidden");
+
+    twoPlayerInit();
+    gameLoop();
+    restartGame();
+    gameInfo();
+  });
+};
+
+gameMode();
