@@ -64,15 +64,15 @@ const init = function () {
   stage5.style.backgroundColor = "";
   stage6.style.backgroundColor = "";
 
-  //// RESET HANGMAN STAGES
-  for (let i = 1; i < 7; i++) {
-    if (
-      document.querySelector(`.stage${i}`).classList.contains("hidden") !=
-      "hidden"
-    ) {
-      document.querySelector(`.stage${i}`).classList.add("hidden");
-    }
-  }
+  //   //// RESET HANGMAN STAGES
+  //   for (let i = 1; i < 7; i++) {
+  //     if (
+  //       document.querySelector(`.stage${i}`).classList.contains("hidden") !=
+  //       "hidden"
+  //     ) {
+  //       document.querySelector(`.stage${i}`).classList.add("hidden");
+  //     }
+  //   }
 
   //// RESET PREVIOUS GUESSES
   displayPrevious.textContent = `Previous: `;
