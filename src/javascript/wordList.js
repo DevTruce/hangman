@@ -93,124 +93,159 @@ export const wordList = [
   // "zilch",
   // "zipper",
   // "zodiac",
-  //// EASY
-  ["e", "x", "z", "y", "v"],
-
-  // HARD
-  ["h", "b", "g", "k", "r"],
 ];
 
 //// CREATING FOR FUTURE FEATURE (KID AND ADULT MODE)
 export const easyWordList = [
   // ANIMALS
-  "e",
-  "a",
-  "s",
-  "y",
-  // "fox",
-  // "horse",
-  // "sheep",
-  // "goat",
-  // "cow",
-  // "elephant",
-  // "lion",
-  // "tiger",
-  // "bear",
-  // "zebra",
-  // "giraffe",
-  // "monkey",
-  // "rabbit",
-  // "lizard",
-  // "monkey",
+  "fox",
+  "horse",
+  "sheep",
+  "goat",
+  "cow",
+  "elephant",
+  "lion",
+  "tiger",
+  "bear",
+  "zebra",
+  "giraffe",
+  "monkey",
+  "rabbit",
+  "lizard",
+  "monkey",
 
-  // // OBJECTS
-  // "ball",
-  // "box",
-  // "car",
-  // "chair",
-  // "couch",
-  // "door",
-  // "toy",
+  // OBJECTS
+  "ball",
+  "box",
+  "car",
+  "chair",
+  "couch",
+  "door",
+  "toy",
 
-  // // COLORS
-  // "red",
-  // "green",
-  // "blue",
-  // "yellow",
-  // "pink",
-  // "orange",
-  // "purple",
+  //COLORS
+  "red",
+  "green",
+  "blue",
+  "yellow",
+  "pink",
+  "orange",
+  "purple",
 
-  // // OTHER
-  // "aria",
-  // "sky",
-  // "water",
-  // "chocolate",
-  // "milk",
+  // OTHER
+  "aria",
+  "sky",
+  "water",
+  "chocolate",
+  "milk",
 ];
 
 export const hardWordList = [
   // A
-  "h",
-  "a",
-  "r",
-  "d",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
-  // "",
+  "aria",
+  "anomaly",
+  "architect",
+
   // B
+  "bandwagon",
+  "banjo",
+  "beekeeper",
+  "blizzard",
+  "buzzing",
+  "buzzwords",
+  "bookworm",
+  "bulldog",
+  "bullshit",
+  "bully",
+  "butterfly",
+
   // C
+  "caliph",
+  "cobweb",
+  "croquet",
+  "cycle",
+  "crypt",
+  "cockiness",
+  "cockroach",
+  "cocktail",
+
   // D
+  "daddy",
+  "deer",
+  "delight",
+  "delightful",
+  "delightfulness",
+  "delighting",
+  "duplex",
+
   // E
+  "elephant",
+
   // F
+  "fashion",
+  "fashionable",
+  "fashionably",
+
   // G
+  "gabby",
+  "galaxy",
+  "gizmo",
+  "gnarly",
+  "gossip",
+  "grogginess",
+  "gazebo",
+
   // H
+  "haircut",
+  "haircutter",
+
   // I
-  // J
-  // K
-  // L
+  "insects",
+  "insecticide",
+
   // M
-  // N
-  // O
-  // P
-  // Q
-  // R
+  "meagan",
+  "milkshake",
+  "moo",
+  "muffin",
+  "muffler",
+  "mushroom",
+
   // S
+  "scratch",
+  "shiv",
+  "snazzy",
+  "sphinx",
+  "spritz",
+  "squawk",
+  "staff",
+  "strength",
+  "strengths",
+  "stretch",
+  "stronghold",
+  "subway",
+
   // T
-  // U
+  "truce",
+  "taco",
+  "tutu",
+
   // V
-  // W
-  // X
-  // Y
+  "vaporize",
+  "vixen",
+  "vodka",
+  "voodoo",
+  "vortex",
+
   // Z
-  // S
-  // T
-  // V
-  // Z
+  "zoo",
+  "zombie",
+  "zooming",
+  "zoom",
+  "zephyr",
+  "zigzag",
+  "zigzagging",
+  "zilch",
+  "zipper",
+  "zodiac",
 ];

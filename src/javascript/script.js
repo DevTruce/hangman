@@ -111,13 +111,13 @@ const init = function () {
 };
 
 const onePlayerInit = function () {
-  init();
-
   easyWords == true
     ? (randomWord =
         easyWordList[Math.trunc(Math.random() * easyWordList.length)])
     : (randomWord =
         hardWordList[Math.trunc(Math.random() * hardWordList.length)]); // generate random word
+  init();
+  cw(randomWord); // DEBUGGING
 };
 
 const twoPlayerInit = function () {
