@@ -93,7 +93,7 @@ main {
   letter-spacing: 0.2rem;
   align-self: center;
   position: relative;
-  top: 3rem;
+  top: -1.2rem;
 }
 
 .base {
@@ -325,7 +325,7 @@ main {
 
 .btn--reveal {
   position: relative;
-  top: -5rem;
+  top: -1rem;
   background-color: #03c988;
   border: 1px solid #f9f5f6;
   padding: 0.5rem 1rem;
