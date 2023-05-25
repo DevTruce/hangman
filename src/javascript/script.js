@@ -6,6 +6,8 @@ const cw = function (msg) {
 };
 
 //// STASHING HTML ELEMENTS
+const totalGames = document.querySelector(".total-games");
+const TotalWins = document.querySelector(".total-wins");
 const displayPrevious = document.querySelector(".display__previous");
 const displayGuessInput = document.querySelector("#display__guess-input");
 const displayWordBox = document.querySelector(".display__word-box");
@@ -215,6 +217,8 @@ const gameLoop = function () {
 
       wins += 1; // increment wins
       gamesPlayed += 1; // increment games played
+      totalGames.textContent = `Games Played: ${gamesPlayed}`;
+      TotalWins.textContent = `Total Wins: ${wins}`;
       cw(`Games Played: ${gamesPlayed}`); // DEBUGGING
       gameIsOn = false; // RESET GAME STATE
       avgGuess();
@@ -238,6 +242,8 @@ const gameLoop = function () {
       }, 500);
 
       gamesPlayed += 1;
+      totalGames.textContent = `Games Played: ${gamesPlayed}`;
+      TotalWins.textContent = `Total Wins: ${wins}`;
       cw(`Games Played: ${gamesPlayed}`); // DEBUGGING
       gameIsOn = false; // RESET GAME STATE
       avgGuess();
