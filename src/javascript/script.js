@@ -6,6 +6,7 @@ const cw = function (msg) {
 };
 
 //// STASHING HTML ELEMENTS
+const avgerageGuess = document.querySelector(".avg-guesses");
 const totalGames = document.querySelector(".total-games");
 const TotalWins = document.querySelector(".total-wins");
 const displayPrevious = document.querySelector(".display__previous");
@@ -234,6 +235,7 @@ const checkGameOver = function () {
     cw(`Games Played: ${gamesPlayed}`); // DEBUGGING
     gameIsOn = false; // RESET GAME STATE
     avgGuess();
+    avgerageGuess.textContent = `Average Guesses: ${avgGuesses}`;
 
     // CHANGE HANGMAN STAGE COLORS
     base.style.backgroundColor = "#98D8AA";
@@ -259,6 +261,7 @@ const checkGameOver = function () {
     cw(`Games Played: ${gamesPlayed}`); // DEBUGGING
     gameIsOn = false; // RESET GAME STATE
     avgGuess();
+    avgerageGuess.textContent = `Average Guesses: ${avgGuesses}`;
 
     // CHANGE HANGMAN STAGE COLORS
     base.style.backgroundColor = "#FF6969";

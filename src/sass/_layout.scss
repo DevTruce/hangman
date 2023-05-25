@@ -38,7 +38,7 @@ main {
   &__word {
     // border: 2px solid white;
     width: 100%;
-    height: 60%;
+    height: 90%;
 
     display: flex;
     flex-direction: column;
@@ -86,7 +86,7 @@ main {
     // border: 2px solid white;
 
     position: relative;
-    top: 50%;
+    top: 10rem;
     left: -15%;
     // transform: translate(-50%, -50%);
   }
@@ -257,6 +257,16 @@ main {
       transform: scale(0.98);
     }
   }
+
+  &--restart-game {
+    position: relative;
+    top: -4rem;
+  }
+
+  &--game-info {
+    position: relative;
+    top: -4rem;
+  }
 }
 
 //////////////////////////////////////////////////
@@ -350,13 +360,14 @@ main {
 
 .stats-box {
   position: relative;
-  top: -2rem;
+  top: -6rem;
   text-align: center;
+  //   height: auto;
 }
 
 .btn--reveal {
   position: relative;
-  top: -2rem;
+  top: -5rem;
   background-color: $colorGreen;
   border: 1px solid $colorWhite;
   padding: 0.5rem 1rem;
