@@ -35,6 +35,7 @@ const wordListPickEasyWords = document.querySelector(
 const wordListPickHardWords = document.querySelector(
   ".word-list-pick--hard-words"
 );
+const reveal = document.querySelector(".btn--reveal");
 
 //// LIST OF RANDOM WORDS
 import { easyWordList, hardWordList } from "./wordList.js";
@@ -48,6 +49,7 @@ let wins = 0;
 let gamesPlayed = 0;
 let avgGuesses = 0;
 let totalGuesses = 0;
+let coins = 0;
 let randomWord,
   answerDisplay,
   userGuess,
@@ -63,8 +65,9 @@ const avgGuess = function () {
   avgGuesses = totalGuesses / correctGuesses; // average guesses it takes the user to guess correctly
   cw(`Average Guesses: ${avgGuesses}`); // DEBUGGING
 };
+
 /////////////////////////////////////////////////
-//// RESET & INITIALIZE GAME (1 PLAYER)
+//// RESET & INITIALIZE GAME
 const init = function () {
   //// RESET GAME VARIABLES
   //   randomWord = wordList[0][Math.trunc(Math.random() * wordList.length)]; // generate random word
@@ -108,8 +111,7 @@ const init = function () {
     document.querySelector(".display__word-box").appendChild(newBlanks); // assign div to a parent element
   }
 
-  console.clear(); // DEBUGGING
-  //   cw(`Random Word: ${randomWord}`); // DEBUGGING
+  //   console.clear(); // DEBUGGING
 };
 
 const onePlayerInit = function () {
@@ -119,7 +121,6 @@ const onePlayerInit = function () {
     : (randomWord =
         hardWordList[Math.trunc(Math.random() * hardWordList.length)]); // generate random word
   init();
-  cw(randomWord); // DEBUGGING
 };
 
 const twoPlayerInit = function () {
@@ -128,7 +129,76 @@ const twoPlayerInit = function () {
 };
 
 /////////////////////////////////////////////////
-//// GAME LOOP / LOGIC
+//// GAME LOGIC
+const gameLogic = function () {
+  //// CHECK IF THE GAME STATE IS ON (IS THE GAME RUNNING?)
+  if (gameIsOn) {
+    cw(`Coins: ${coins}`); // DEBUGGING
+    cw(`Random Word: ${randomWord}`); // DEBUGGING
+
+    //// CHECK IF USER INPUTS NOTHING OR ANYTHING THATS NOT A LETTER OR MORE THAN 1 NUMBER OR LETTER
+    if (!userGuess || !userGuess.match(/[a-z]/) || userGuess.length > 1) {
+      alert("🛑 Invalid input, One Letter at a time! Please try again.");
+
+      //// CHECK IF USER HAS GUESSED THAT LETTER ALREADY
+    } else {
+      if (previousGuesses.includes(userGuess)) {
+        alert("📕 You have already guessed that letter. Please try again.");
+      } else {
+        previousGuesses.push(userGuess); // update previous guesses display
+        cw(`Previous Guessed: ${previousGuesses}`); // DEBUGGING
+
+        //// CHECK IF USER INPUTS CORRECT GUESS
+        if (randomWord.includes(userGuess)) {
+          totalGuesses += 1; // increment avg guesses
+          cw(`Total Guesses: ${totalGuesses}`); // DEBUGGING
+
+          //// LOOP THE LENGTH OF THE RANDOM WORD AND CHECK EACH LETTER FOR A MATCH
+          for (let i = 0; i < randomWord.length; i++) {
+            if (randomWord[i] === userGuess) {
+              correctGuesses++;
+
+              // UPDATE BLANKS DISPLAY TO SHOW CORRECT GUESS
+              addBlankWords = document.querySelectorAll(
+                ".display__word-blanks"
+              )[i]; // locate the correct blank to assign the word to
+              addBlankWords.textContent = userGuess.toUpperCase(); // assign word to the blank
+
+              cw(`Correct Guesses: ${correctGuesses}`); // DEBUGGING
+            }
+            //// UPDATE PREVIOUS GUESSES DISPLAY
+            displayPrevious.textContent = `Previous: ${previousGuesses}`;
+
+            //// CHECK IF THE GAME IS OVER
+            // checkGameOver();
+          }
+          //// CHECK IF USER INPUTS INCORRECT GUESS
+        } else {
+          totalGuesses += 1; // increment avg guesses
+          cw(`Total Guesses: ${totalGuesses}`); // DEBUGGING
+
+          incorrectGuesses++;
+
+          // UPDATE PREVIOUS GUESSES DISPLAY
+          displayPrevious.textContent = `Previous: ${previousGuesses}`;
+
+          // DRAW THE NEXT STAGE OF THE HANGMAN
+          document
+            .querySelector(`.stage${incorrectGuesses}`)
+            .classList.remove("hidden");
+
+          checkGameOver();
+
+          cw(`Incorrect: ${incorrectGuesses}`); // DEBUGGING
+        }
+      }
+    }
+    checkGameOver();
+  }
+};
+
+/////////////////////////////////////////////////
+//// GAME LOOP
 const gameLoop = function () {
   displayGuessInput.addEventListener("keydown", function (enter) {
     //// CHECK IF USER PRESSED ENTER & STORE THE GUESS IF TRUE
@@ -140,131 +210,94 @@ const gameLoop = function () {
       cw(`User Guessssss: ${userGuess}`);
       cw(`User Guess: ${userGuess}`); // DEBUGGING
 
-      //// CHECK IF THE GAME STATE IS ON (IS THE GAME RUNNING?)
-      if (gameIsOn) {
-        cw(`Random Word: ${randomWord}`); // DEBUGGING
-
-        //// CHECK IF USER INPUTS NOTHING OR ANYTHING THATS NOT A LETTER OR MORE THAN 1 NUMBER OR LETTER
-        if (!userGuess || !userGuess.match(/[a-z]/) || userGuess.length > 1) {
-          alert("🛑 Invalid input, One Letter at a time! Please try again.");
-
-          //// CHECK IF USER HAS GUESSED THAT LETTER ALREADY
-        } else {
-          if (previousGuesses.includes(userGuess)) {
-            alert("📕 You have already guessed that letter. Please try again.");
-          } else {
-            previousGuesses.push(userGuess); // update previous guesses display
-            cw(`Previous Guessed: ${previousGuesses}`); // DEBUGGING
-
-            //// CHECK IF USER INPUTS CORRECT GUESS
-            if (randomWord.includes(userGuess)) {
-              totalGuesses += 1; // increment avg guesses
-              cw(`Total Guesses: ${totalGuesses}`); // DEBUGGING
-
-              //// LOOP THE LENGTH OF THE RANDOM WORD AND CHECK EACH LETTER FOR A MATCH
-              for (let i = 0; i < randomWord.length; i++) {
-                if (randomWord[i] === userGuess) {
-                  correctGuesses++;
-
-                  // UPDATE BLANKS DISPLAY TO SHOW CORRECT GUESS
-                  addBlankWords = document.querySelectorAll(
-                    ".display__word-blanks"
-                  )[i]; // locate the correct blank to assign the word to
-                  addBlankWords.textContent = userGuess.toUpperCase(); // assign word to the blank
-
-                  cw(`Correct Guesses: ${correctGuesses}`); // DEBUGGING
-                }
-                //// UPDATE PREVIOUS GUESSES DISPLAY
-                displayPrevious.textContent = `Previous: ${previousGuesses}`;
-
-                //// CHECK IF THE GAME IS OVER
-                checkGameOver();
-              }
-              //// CHECK IF USER INPUTS INCORRECT GUESS
-            } else {
-              totalGuesses += 1; // increment avg guesses
-              cw(`Total Guesses: ${totalGuesses}`); // DEBUGGING
-
-              incorrectGuesses++;
-
-              // UPDATE PREVIOUS GUESSES DISPLAY
-              displayPrevious.textContent = `Previous: ${previousGuesses}`;
-
-              // DRAW THE NEXT STAGE OF THE HANGMAN
-              document
-                .querySelector(`.stage${incorrectGuesses}`)
-                .classList.remove("hidden");
-
-              //   alert("💥 That letter is not in the word.");
-              checkGameOver();
-
-              cw(`Incorrect: ${incorrectGuesses}`); // DEBUGGING
-            }
-          }
-        }
-      }
+      gameLogic();
     }
   });
 
-  /////////////////////////////////////////////////
-  //// CHECK IF THE PLAYER HAS WON OR LOST THE GAME
-  const checkGameOver = function () {
-    //// PLAYER HAS WON
-    if (correctGuesses === randomWord.length) {
-      setTimeout(function () {
-        alert("🥳 Congratulations! YOU WON!");
-      }, 500);
-
-      wins += 1; // increment wins
-      gamesPlayed += 1; // increment games played
-      totalGames.textContent = `Games Played: ${gamesPlayed}`;
-      TotalWins.textContent = `Total Wins: ${wins}`;
-      cw(`Games Played: ${gamesPlayed}`); // DEBUGGING
-      gameIsOn = false; // RESET GAME STATE
-      avgGuess();
-
-      // CHANGE HANGMAN STAGE COLORS
-      base.style.backgroundColor = "#98D8AA";
-      pole.style.backgroundColor = "#98D8AA";
-      topp.style.backgroundColor = "#98D8AA";
-      drop.style.backgroundColor = "#98D8AA";
-      stage1.style.outlineColor = "#98D8AA";
-      stage2.style.backgroundColor = "#98D8AA";
-      stage3.style.backgroundColor = "#98D8AA";
-      stage4.style.backgroundColor = "#98D8AA";
-      stage5.style.backgroundColor = "#98D8AA";
-      stage6.style.backgroundColor = "#98D8AA";
-
-      //// PLAYER HAS LOST THE GAME
-    } else if (incorrectGuesses === 6) {
-      setTimeout(function () {
-        alert(`🆘 You Lost! The Answer was: ${randomWord}`);
-      }, 500);
-
-      gamesPlayed += 1;
-      totalGames.textContent = `Games Played: ${gamesPlayed}`;
-      TotalWins.textContent = `Total Wins: ${wins}`;
-      cw(`Games Played: ${gamesPlayed}`); // DEBUGGING
-      gameIsOn = false; // RESET GAME STATE
-      avgGuess();
-
-      // CHANGE HANGMAN STAGE COLORS
-      base.style.backgroundColor = "#FF6969";
-      pole.style.backgroundColor = "#FF6969";
-      topp.style.backgroundColor = "#FF6969";
-      drop.style.backgroundColor = "#FF6969";
-      stage1.style.outlineColor = "#FF6969";
-      stage2.style.backgroundColor = "#FF6969";
-      stage3.style.backgroundColor = "#FF6969";
-      stage4.style.backgroundColor = "#FF6969";
-      stage5.style.backgroundColor = "#FF6969";
-      stage6.style.backgroundColor = "#FF6969";
-    }
-  };
+  checkGameOver();
 };
 
 /////////////////////////////////////////////////
-//// CHECK IF THE PLAYER HAS RESTARTED THE GAME
+//// WIN CONDITION
+const checkGameOver = function () {
+  //// PLAYER HAS WON
+  if (correctGuesses === randomWord.length) {
+    setTimeout(function () {
+      alert("🥳 Congratulations! YOU WON!");
+    }, 500);
+
+    wins += 1; // increment wins
+    coins += 2;
+    gamesPlayed += 1; // increment games played
+    totalGames.textContent = `Games Played: ${gamesPlayed}`;
+    TotalWins.textContent = `Total Wins: ${wins}`;
+    cw(`Games Played: ${gamesPlayed}`); // DEBUGGING
+    gameIsOn = false; // RESET GAME STATE
+    avgGuess();
+
+    // CHANGE HANGMAN STAGE COLORS
+    base.style.backgroundColor = "#98D8AA";
+    pole.style.backgroundColor = "#98D8AA";
+    topp.style.backgroundColor = "#98D8AA";
+    drop.style.backgroundColor = "#98D8AA";
+    stage1.style.outlineColor = "#98D8AA";
+    stage2.style.backgroundColor = "#98D8AA";
+    stage3.style.backgroundColor = "#98D8AA";
+    stage4.style.backgroundColor = "#98D8AA";
+    stage5.style.backgroundColor = "#98D8AA";
+    stage6.style.backgroundColor = "#98D8AA";
+
+    //// PLAYER HAS LOST THE GAME
+  } else if (incorrectGuesses === 6) {
+    setTimeout(function () {
+      alert(`🆘 You Lost! The Answer was: ${randomWord}`);
+    }, 500);
+
+    gamesPlayed += 1;
+    totalGames.textContent = `Games Played: ${gamesPlayed}`;
+    TotalWins.textContent = `Total Wins: ${wins}`;
+    cw(`Games Played: ${gamesPlayed}`); // DEBUGGING
+    gameIsOn = false; // RESET GAME STATE
+    avgGuess();
+
+    // CHANGE HANGMAN STAGE COLORS
+    base.style.backgroundColor = "#FF6969";
+    pole.style.backgroundColor = "#FF6969";
+    topp.style.backgroundColor = "#FF6969";
+    drop.style.backgroundColor = "#FF6969";
+    stage1.style.outlineColor = "#FF6969";
+    stage2.style.backgroundColor = "#FF6969";
+    stage3.style.backgroundColor = "#FF6969";
+    stage4.style.backgroundColor = "#FF6969";
+    stage5.style.backgroundColor = "#FF6969";
+    stage6.style.backgroundColor = "#FF6969";
+  }
+};
+
+/////////////////////////////////////////////////
+//// REVEAL A LETTER
+const revealLetter = function () {
+  reveal.addEventListener("click", function () {
+    if (coins >= 1) {
+      let randomLetterFromRandomWord =
+        randomWord[Math.trunc(Math.random() * randomWord.length)];
+
+      if (!previousGuesses.includes(randomLetterFromRandomWord)) {
+        coins -= 1;
+        userGuess = randomLetterFromRandomWord.toLowerCase();
+        cw(`Random Letter From Random Word: ${randomLetterFromRandomWord}`);
+        cw(`Coins: ${coins}`);
+      }
+
+      gameLogic();
+    } else {
+      alert("🌕 You have no coins! Win a game to gain coins!");
+    }
+  });
+};
+
+/////////////////////////////////////////////////
+//// RESTART GAME
 const restartGame = function () {
   //// REMOVE BLANKS FROM THE DISPLAY
   btnRestartGame.addEventListener("click", function () {
@@ -276,17 +309,17 @@ const restartGame = function () {
     if (isTwoPlayer) {
       avgGuess();
       twoPlayerInit();
-      //   gameMode();
+      gamesPlayed += 1;
     } else {
       avgGuess();
       onePlayerInit();
-      //   gameMode();
+      gamesPlayed += 1;
     }
   });
 };
 
 /////////////////////////////////////////////////
-//// CHECK IF THE PLAYER HAS ASKED FOR THE GAME INFO
+//// DISPLAY GAME INFO
 const gameInfo = function () {
   const closePopUp = function () {
     popUpGameInfo.classList.add("hidden");
@@ -322,12 +355,13 @@ const gameInfo = function () {
   });
 };
 
-// FIRST THING TO RUN!! (SELECT GAME MODES!)
+/////////////////////////////////////////////////
+//// FIRST THING TO RUN!! (SELECT GAME MODES!)
 const gameMode = function () {
   // PLAYER 1
   if (gameModeSelect) {
     onePlayer.addEventListener("click", function () {
-      console.log("ONE PLAYER GAME MODE");
+      cw("Selected Game Mode: 1 Player");
 
       document.querySelector(".word-list-pick").classList.remove("hidden");
       document.querySelector(".game-mode-pick").classList.add("hidden");
@@ -341,7 +375,9 @@ const gameMode = function () {
           easyWords = true;
           startGame();
 
-          cw(`word list: ${easyWordList}`); // DEBUGGING
+          cw(`Word List: ${easyWordList}`); // DEBUGGING
+          cw(`Difficulty: Easy`); // DEBUGGING
+          cw(`Random Word: ${randomWord}`); // DEBUGGING
         });
 
         // LISTEN FOR CLICK EVENT FOR HARD WORDS
@@ -351,16 +387,20 @@ const gameMode = function () {
             hardWordList[Math.trunc(Math.random() * hardWordList.length)]; // generate random word
           gameModeSelect = false;
           hardWords = true;
+
+          // run game for multiplayer
           startGame();
 
-          cw(`word list: ${hardWordList}`); // DEBUGGING
+          cw(`Word List: ${hardWordList}`); // DEBUGGING
+          cw(`Difficulty: Hard`); // DEBUGGING
+          cw(`Random Word: ${randomWord}`); // DEBUGGING
         });
       }
     });
 
     //// PLAYER 2
     twoPlayer.addEventListener("click", function () {
-      console.log("TWO PLAYER GAME MODE");
+      cw("Selected Game Mode: 2 Player");
 
       document.querySelector(".game-mode-pick").classList.add("hidden");
       randomWord = prompt("Enter a word to guess").toLowerCase();
@@ -368,27 +408,29 @@ const gameMode = function () {
       isTwoPlayer = true;
       cw(randomWord); // DEBUGGING
 
-      console.error(gameModeSelect); // DEBUGGING
-      console.error(randomWord); // DEBUGGING
       // run game for single player
       startGame();
     });
   }
 };
 
-function startGame() {
+/////////////////////////////////////////////////
+//// EXECUTE ALL GAME FUNCTIONS
+const startGame = function () {
   init();
   cw("Init running"); // DEBUGGING
   gameLoop();
   cw("Game loop running"); // DEBUGGING
   restartGame();
-  cw("Restart btn running"); // DEBUGGING
+  cw("Restart running"); // DEBUGGING
+};
 
-  console.error(gameModeSelect); // DEBUGGING
-  console.error(randomWord); // DEBUGGING
-}
-
+/////////////////////////////////////////////////
+//// START THE GAME
 gameInfo();
 cw("Game info running"); // DEBUGGING
+
 gameMode();
 cw("Gamemode running"); // DEBUGGING
+
+revealLetter();

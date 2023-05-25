@@ -351,4 +351,15 @@ main {
 .stats-box {
   position: relative;
   top: -2rem;
+  text-align: center;
+}
+
+.btn--reveal {
+  position: relative;
+  top: -2rem;
+  background-color: $colorGreen;
+  border: 1px solid $colorWhite;
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  color: $colorWhite;
 }

@@ -310,6 +310,17 @@ main {
 .stats-box {
   position: relative;
   top: -2rem;
+  text-align: center;
+}
+
+.btn--reveal {
+  position: relative;
+  top: -2rem;
+  background-color: #03c988;
+  border: 1px solid #f9f5f6;
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  color: #f9f5f6;
 }
 
 /*# sourceMappingURL=style.css.map */
