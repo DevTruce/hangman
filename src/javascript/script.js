@@ -35,13 +35,17 @@ const wordListPickHardWords = document.querySelector(
 );
 
 //// LIST OF RANDOM WORDS
-import { wordList, easyWordList, hardWordList } from "./wordList.js";
+import { easyWordList, hardWordList } from "./wordList.js";
 
 //// DECLARING GAME VARIABLES
 let easyWords = false;
 let hardWords = false;
 let gameIsOn = true;
 let gameModeSelect = true;
+let wins = 0;
+let gamesPlayed = 0;
+let avgGuesses = 0;
+let totalGuesses = 0;
 let randomWord,
   answerDisplay,
   userGuess,
@@ -52,6 +56,11 @@ let randomWord,
   addBlankWords,
   isTwoPlayer;
 
+const avgGuess = function () {
+  // calc avg guess
+  avgGuesses = totalGuesses / correctGuesses; // average guesses it takes the user to guess correctly
+  cw(`Average Guesses: ${avgGuesses}`); // DEBUGGING
+};
 /////////////////////////////////////////////////
 //// RESET & INITIALIZE GAME (1 PLAYER)
 const init = function () {
@@ -98,7 +107,7 @@ const init = function () {
   }
 
   console.clear(); // DEBUGGING
-  cw(`Random Word: ${randomWord}`); // DEBUGGING
+  //   cw(`Random Word: ${randomWord}`); // DEBUGGING
 };
 
 const onePlayerInit = function () {
@@ -147,6 +156,9 @@ const gameLoop = function () {
 
             //// CHECK IF USER INPUTS CORRECT GUESS
             if (randomWord.includes(userGuess)) {
+              totalGuesses += 1; // increment avg guesses
+              cw(`Total Guesses: ${totalGuesses}`); // DEBUGGING
+
               //// LOOP THE LENGTH OF THE RANDOM WORD AND CHECK EACH LETTER FOR A MATCH
               for (let i = 0; i < randomWord.length; i++) {
                 if (randomWord[i] === userGuess) {
@@ -168,6 +180,9 @@ const gameLoop = function () {
               }
               //// CHECK IF USER INPUTS INCORRECT GUESS
             } else {
+              totalGuesses += 1; // increment avg guesses
+              cw(`Total Guesses: ${totalGuesses}`); // DEBUGGING
+
               incorrectGuesses++;
 
               // UPDATE PREVIOUS GUESSES DISPLAY
@@ -198,7 +213,11 @@ const gameLoop = function () {
         alert("🥳 Congratulations! YOU WON!");
       }, 500);
 
+      wins += 1; // increment wins
+      gamesPlayed += 1; // increment games played
+      cw(`Games Played: ${gamesPlayed}`); // DEBUGGING
       gameIsOn = false; // RESET GAME STATE
+      avgGuess();
 
       // CHANGE HANGMAN STAGE COLORS
       base.style.backgroundColor = "#98D8AA";
@@ -218,7 +237,10 @@ const gameLoop = function () {
         alert(`🆘 You Lost! The Answer was: ${randomWord}`);
       }, 500);
 
+      gamesPlayed += 1;
+      cw(`Games Played: ${gamesPlayed}`); // DEBUGGING
       gameIsOn = false; // RESET GAME STATE
+      avgGuess();
 
       // CHANGE HANGMAN STAGE COLORS
       base.style.backgroundColor = "#FF6969";
@@ -246,9 +268,13 @@ const restartGame = function () {
     }
     //// EXECUE INIT FUNCTION (RESET GAME VARIABLES & STATE)
     if (isTwoPlayer) {
+      avgGuess();
       twoPlayerInit();
+      //   gameMode();
     } else {
+      avgGuess();
       onePlayerInit();
+      //   gameMode();
     }
   });
 };
@@ -344,10 +370,6 @@ const gameMode = function () {
   }
 };
 
-// if (gameModeSelect === false) {
-//   startGame();
-// }
-
 function startGame() {
   init();
   cw("Init running"); // DEBUGGING
@@ -363,3 +385,4 @@ function startGame() {
 gameInfo();
 cw("Game info running"); // DEBUGGING
 gameMode();
+cw("Gamemode running"); // DEBUGGING
