@@ -57,7 +57,29 @@
 
 [![Product Name Screen Shot][product-screenshot]](product-link)
 
-The classic hangman game! I had a blast building this project and I came across several challenges that in the end made me a stronger developer! This has been my favorite project so far and I am excited to make it even better in the future! One of the main challenges I faced during this project was how to implement the blank slots for the random word generated as well as how to update them when the user guessed a correct letter. After some research along with trial and error I managed to solve both issues! For the first issue I simply looped the length of the generated word and created a new div, assigned it a class and appended it to the necessary element each iteration. In doing this I was able to solve the blank slot issues! along with some css the style it accordingly of course. For the second issue I solved it in a similar manner by simply looping the length of the generated word and checking if the user guess and === to the generated word in the current index, this allowed me to compare the user guess directly to each letter in the generated word. After that I assigned the userguessed letter to the corrisponding div element using the index to ensure that the letter would be displayed in the correct position. Overall this project has been a great challenge and learning experience! I plan to refactor the code and clean up the project soon because I know I can do better! I just wanted to get this project working before focusing on producing the best code I can. I also plan to add a feature that will give you the option to play this along OR with a friend! The feature will simply allow one player to create the random word to then be guessed by the other!
+The classic hangman game! I had a blast building this project and I came across several challenges that in the end made me a stronger developer! This has been my favorite project so far and I am excited to make it even better in the future!
+
+One of the main challenges I faced during this project was how to implement the blank slots for the random word generated as well as how to update them when the user guessed a correct letter. After some research along with trial and error I managed to solve both issues! For the first issue I simply looped the length of the generated word and created a new div, assigned it a class and appended it to the necessary element each iteration. In doing this I was able to solve the blank slot issues! along with some css the style it accordingly of course.
+
+For the second issue I solved it in a similar manner by simply looping the length of the generated word and checking if the user guess and === to the generated word in the current index, this allowed me to compare the user guess directly to each letter in the generated word. After that I assigned the userguessed letter to the corrisponding div element using the index to ensure that the letter would be displayed in the correct position.
+
+Overall this project has been a great challenge and learning experience! I plan to refactor the code and clean up the project soon because I know I can do better! I just wanted to get this project working before focusing on producing the best code I can. I also plan to add a feature that will give you the option to play this along OR with a friend! The feature will simply allow one player to create the random word to then be guessed by the other!
+
+Today I went ahead an updated this project with some new features, refactored the code base a bit and I also made the game work on most devices with a nice simple design! I seriously have had such an amazing time developing this project! It felt very daunting in the beginning and I was unsure of my capabilities because so far I have only spent a few hours learning js outside of building this project. This project took me awhile to fully complete but I learned so much and really solidified other concepts that I knew.
+
+Here are the features that I have implemented:
+
+- 1 player or 2 player game mode (play with a friend!)
+- earn coins by winning matches and spend those coins on reveals to solve words easier!
+- easy or hard mode
+- updated the word lists and created 2 seperated word lists
+- average guess counter / total games counter / wins counter
+
+During this project I have learned so much! I also learned some key weakpoints of mine that I plan to work on! I know that I can do a MUCH better job with the html/css/sass in this project but that was not my focus with the project so I did just throw it the html/css together quickly to allow me to focus on javascript. The main reason for me not taking the html/css too serious is the following:
+
+- I was unsure if I could complete this project in the first place so I did not want to overthink or worry about the css.
+- the reason I built this project was to learn/solidify javascript concepts nothing else.
+- I plan to remake a WAY better hangman game in the future when I complete my javascript course.
 
 ### Built With
 
