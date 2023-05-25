@@ -307,4 +307,9 @@ main {
   justify-content: center;
 }
 
+.stats-box {
+  position: relative;
+  top: -2rem;
+}
+
 /*# sourceMappingURL=style.css.map */
