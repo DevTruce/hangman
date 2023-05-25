@@ -64,7 +64,7 @@ let randomWord,
 const avgGuess = function () {
   // calc avg guess
   avgGuesses = totalGuesses / correctGuesses; // average guesses it takes the user to guess correctly
-  cw(`Average Guesses: ${avgGuesses}`); // DEBUGGING
+  //   cw(`Average Guesses: ${avgGuesses}`); // DEBUGGING
 };
 
 /////////////////////////////////////////////////
@@ -134,8 +134,8 @@ const twoPlayerInit = function () {
 const gameLogic = function () {
   //// CHECK IF THE GAME STATE IS ON (IS THE GAME RUNNING?)
   if (gameIsOn) {
-    cw(`Coins: ${coins}`); // DEBUGGING
-    cw(`Random Word: ${randomWord}`); // DEBUGGING
+    // cw(`Coins: ${coins}`); // DEBUGGING
+    // cw(`Random Word: ${randomWord}`); // DEBUGGING
 
     //// CHECK IF USER INPUTS NOTHING OR ANYTHING THATS NOT A LETTER OR MORE THAN 1 NUMBER OR LETTER
     if (!userGuess || !userGuess.match(/[a-z]/) || userGuess.length > 1) {
@@ -147,12 +147,12 @@ const gameLogic = function () {
         alert("📕 You have already guessed that letter. Please try again.");
       } else {
         previousGuesses.push(userGuess); // update previous guesses display
-        cw(`Previous Guessed: ${previousGuesses}`); // DEBUGGING
+        // cw(`Previous Guessed: ${previousGuesses}`); // DEBUGGING
 
         //// CHECK IF USER INPUTS CORRECT GUESS
         if (randomWord.includes(userGuess)) {
           totalGuesses += 1; // increment avg guesses
-          cw(`Total Guesses: ${totalGuesses}`); // DEBUGGING
+          //   cw(`Total Guesses: ${totalGuesses}`); // DEBUGGING
 
           //// LOOP THE LENGTH OF THE RANDOM WORD AND CHECK EACH LETTER FOR A MATCH
           for (let i = 0; i < randomWord.length; i++) {
@@ -165,7 +165,7 @@ const gameLogic = function () {
               )[i]; // locate the correct blank to assign the word to
               addBlankWords.textContent = userGuess.toUpperCase(); // assign word to the blank
 
-              cw(`Correct Guesses: ${correctGuesses}`); // DEBUGGING
+              //   cw(`Correct Guesses: ${correctGuesses}`); // DEBUGGING
             }
             //// UPDATE PREVIOUS GUESSES DISPLAY
             displayPrevious.textContent = `Previous: ${previousGuesses}`;
@@ -176,7 +176,7 @@ const gameLogic = function () {
           //// CHECK IF USER INPUTS INCORRECT GUESS
         } else {
           totalGuesses += 1; // increment avg guesses
-          cw(`Total Guesses: ${totalGuesses}`); // DEBUGGING
+          //   cw(`Total Guesses: ${totalGuesses}`); // DEBUGGING
 
           incorrectGuesses++;
 
@@ -190,7 +190,7 @@ const gameLogic = function () {
 
           checkGameOver();
 
-          cw(`Incorrect: ${incorrectGuesses}`); // DEBUGGING
+          //   cw(`Incorrect: ${incorrectGuesses}`); // DEBUGGING
         }
       }
     }
@@ -209,7 +209,7 @@ const gameLoop = function () {
       displayGuessInput.value = ""; // clear input box after user pressed enter
 
       cw(`User Guessssss: ${userGuess}`);
-      cw(`User Guess: ${userGuess}`); // DEBUGGING
+      //   cw(`User Guess: ${userGuess}`); // DEBUGGING
 
       gameLogic();
     }
@@ -232,7 +232,7 @@ const checkGameOver = function () {
     gamesPlayed += 1; // increment games played
     totalGames.textContent = `Games Played: ${gamesPlayed}`;
     TotalWins.textContent = `Total Wins: ${wins}`;
-    cw(`Games Played: ${gamesPlayed}`); // DEBUGGING
+    // cw(`Games Played: ${gamesPlayed}`); // DEBUGGING
     gameIsOn = false; // RESET GAME STATE
     avgGuess();
     avgerageGuess.textContent = `Average Guesses: ${avgGuesses}`;
@@ -258,7 +258,7 @@ const checkGameOver = function () {
     gamesPlayed += 1;
     totalGames.textContent = `Games Played: ${gamesPlayed}`;
     TotalWins.textContent = `Total Wins: ${wins}`;
-    cw(`Games Played: ${gamesPlayed}`); // DEBUGGING
+    // cw(`Games Played: ${gamesPlayed}`); // DEBUGGING
     gameIsOn = false; // RESET GAME STATE
     avgGuess();
     avgerageGuess.textContent = `Average Guesses: ${avgGuesses}`;
@@ -378,9 +378,9 @@ const gameMode = function () {
           easyWords = true;
           startGame();
 
-          cw(`Word List: ${easyWordList}`); // DEBUGGING
-          cw(`Difficulty: Easy`); // DEBUGGING
-          cw(`Random Word: ${randomWord}`); // DEBUGGING
+          //   cw(`Word List: ${easyWordList}`); // DEBUGGING
+          //   cw(`Difficulty: Easy`); // DEBUGGING
+          //   cw(`Random Word: ${randomWord}`); // DEBUGGING
         });
 
         // LISTEN FOR CLICK EVENT FOR HARD WORDS
@@ -394,9 +394,9 @@ const gameMode = function () {
           // run game for multiplayer
           startGame();
 
-          cw(`Word List: ${hardWordList}`); // DEBUGGING
-          cw(`Difficulty: Hard`); // DEBUGGING
-          cw(`Random Word: ${randomWord}`); // DEBUGGING
+          //   cw(`Word List: ${hardWordList}`); // DEBUGGING
+          //   cw(`Difficulty: Hard`); // DEBUGGING
+          //   cw(`Random Word: ${randomWord}`); // DEBUGGING
         });
       }
     });
@@ -409,7 +409,7 @@ const gameMode = function () {
       randomWord = prompt("Enter a word to guess").toLowerCase();
       gameModeSelect = false;
       isTwoPlayer = true;
-      cw(randomWord); // DEBUGGING
+      //   cw(randomWord); // DEBUGGING
 
       // run game for single player
       startGame();
@@ -421,19 +421,19 @@ const gameMode = function () {
 //// EXECUTE ALL GAME FUNCTIONS
 const startGame = function () {
   init();
-  cw("Init running"); // DEBUGGING
+  //   cw("Init running"); // DEBUGGING
   gameLoop();
-  cw("Game loop running"); // DEBUGGING
+  //   cw("Game loop running"); // DEBUGGING
   restartGame();
-  cw("Restart running"); // DEBUGGING
+  //   cw("Restart running"); // DEBUGGING
 };
 
 /////////////////////////////////////////////////
 //// START THE GAME
 gameInfo();
-cw("Game info running"); // DEBUGGING
+// cw("Game info running"); // DEBUGGING
 
 gameMode();
-cw("Gamemode running"); // DEBUGGING
+// cw("Gamemode running"); // DEBUGGING
 
 revealLetter();
