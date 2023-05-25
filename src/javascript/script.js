@@ -24,12 +24,24 @@ const stage3 = document.querySelector(".stage3");
 const stage4 = document.querySelector(".stage4");
 const stage5 = document.querySelector(".stage5");
 const stage6 = document.querySelector(".stage6");
+const onePlayer = document.querySelector(".game-mode-pick--1player");
+const twoPlayer = document.querySelector(".game-mode-pick--2player");
+const wordListPick = document.querySelector(".word-list-pick");
+const wordListPickEasyWords = document.querySelector(
+  ".word-list-pick--easy-words"
+);
+const wordListPickHardWords = document.querySelector(
+  ".word-list-pick--hard-words"
+);
 
 //// LIST OF RANDOM WORDS
-import { wordList } from "./wordList.js";
+import { wordList, easyWordList, hardWordList } from "./wordList.js";
 
 //// DECLARING GAME VARIABLES
+let easyWords = false;
+let hardWords = false;
 let gameIsOn = true;
+let gameModeSelect = true;
 let randomWord,
   answerDisplay,
   userGuess,
@@ -44,7 +56,7 @@ let randomWord,
 //// RESET & INITIALIZE GAME (1 PLAYER)
 const init = function () {
   //// RESET GAME VARIABLES
-  randomWord = wordList[Math.trunc(Math.random() * wordList.length)]; // generate random word
+  //   randomWord = wordList[0][Math.trunc(Math.random() * wordList.length)]; // generate random word
   gameIsOn = true;
   answerDisplay = [];
   userGuess = "";
@@ -89,54 +101,19 @@ const init = function () {
   cw(`Random Word: ${randomWord}`); // DEBUGGING
 };
 
-/////////////////////////////////////////////////
-//// RESET & INITIALIZE GAME (1 PLAYER)
+const onePlayerInit = function () {
+  init();
+
+  easyWords == true
+    ? (randomWord =
+        easyWordList[Math.trunc(Math.random() * easyWordList.length)])
+    : (randomWord =
+        hardWordList[Math.trunc(Math.random() * hardWordList.length)]); // generate random word
+};
+
 const twoPlayerInit = function () {
-  //// RESET GAME VARIABLES
-  randomWord = prompt("Input Your Secret Word: ").toLowerCase(); // generate random word
-  gameIsOn = true;
-  isTwoPlayer = true;
-  answerDisplay = [];
-  userGuess = "";
-  previousGuesses = [];
-  incorrectGuesses = 0;
-  correctGuesses = 0;
-  newBlanks = "";
-
-  //// RESET HANGMAN STAGE COLORS
-  base.style.backgroundColor = "";
-  pole.style.backgroundColor = "";
-  topp.style.backgroundColor = "";
-  drop.style.backgroundColor = "";
-  stage1.style.outlineColor = "";
-  stage2.style.backgroundColor = "";
-  stage3.style.backgroundColor = "";
-  stage4.style.backgroundColor = "";
-  stage5.style.backgroundColor = "";
-  stage6.style.backgroundColor = "";
-
-  //// RESET HANGMAN STAGES
-  for (let i = 1; i < 7; i++) {
-    if (
-      document.querySelector(`.stage${i}`).classList.contains("hidden") !=
-      "hidden"
-    ) {
-      document.querySelector(`.stage${i}`).classList.add("hidden");
-    }
-  }
-
-  //// RESET PREVIOUS GUESSES
-  displayPrevious.textContent = `Previous: `;
-
-  //// CREATE BLANKS TO RANDOM WORD
-  for (let i = 0; i < randomWord.length; i++) {
-    newBlanks = document.createElement("div"); // create div
-    newBlanks.classList.add("display__word-blanks"); // attach class to div
-    document.querySelector(".display__word-box").appendChild(newBlanks); // assign div to a parent element
-  }
-
-  console.clear(); // DEBUGGING
-  cw(`Random Word: ${randomWord}`); // DEBUGGING
+  randomWord = prompt("Enter a word to guess").toLowerCase();
+  init();
 };
 
 /////////////////////////////////////////////////
@@ -271,7 +248,7 @@ const restartGame = function () {
     if (isTwoPlayer) {
       twoPlayerInit();
     } else {
-      init();
+      onePlayerInit();
     }
   });
 };
@@ -313,38 +290,76 @@ const gameInfo = function () {
   });
 };
 
-/////////////////////////////////////////////////
-//// EXECUTE THE GAME FUNCTIONS
-// init();
-// gameLoop();
-// restartGame();
-// gameInfo();
-
-// check if player clicks 1 or 2
+// FIRST THING TO RUN!! (SELECT GAME MODES!)
 const gameMode = function () {
-  const onePlayer = document.querySelector(".game-mode-pick--1player");
+  // PLAYER 1
+  if (gameModeSelect) {
+    onePlayer.addEventListener("click", function () {
+      console.log("ONE PLAYER GAME MODE");
 
-  onePlayer.addEventListener("click", function () {
-    console.log("ONE PLAYER GAME MODE");
+      document.querySelector(".word-list-pick").classList.remove("hidden");
+      document.querySelector(".game-mode-pick").classList.add("hidden");
+      if (gameModeSelect) {
+        //    LISTEN FOR CLICK EVENT FOR EASY WORDS
+        wordListPickEasyWords.addEventListener("click", function () {
+          document.querySelector(".word-list-pick").classList.add("hidden");
+          randomWord =
+            easyWordList[Math.trunc(Math.random() * easyWordList.length)]; // generate random word
+          gameModeSelect = false;
+          easyWords = true;
+          startGame();
 
-    document.querySelector(".game-mode-pick").classList.add("hidden");
-    init();
-    gameLoop();
-    restartGame();
-    gameInfo();
-  });
+          cw(`word list: ${easyWordList}`); // DEBUGGING
+        });
 
-  const twoPlayer = document.querySelector(".game-mode-pick--2player");
-  twoPlayer.addEventListener("click", function () {
-    console.log("TWO PLAYER GAME MODE");
+        // LISTEN FOR CLICK EVENT FOR HARD WORDS
+        wordListPickHardWords.addEventListener("click", function () {
+          wordListPick.classList.add("hidden");
+          randomWord =
+            hardWordList[Math.trunc(Math.random() * hardWordList.length)]; // generate random word
+          gameModeSelect = false;
+          hardWords = true;
+          startGame();
 
-    document.querySelector(".game-mode-pick").classList.add("hidden");
+          cw(`word list: ${hardWordList}`); // DEBUGGING
+        });
+      }
+    });
 
-    twoPlayerInit();
-    gameLoop();
-    restartGame();
-    gameInfo();
-  });
+    //// PLAYER 2
+    twoPlayer.addEventListener("click", function () {
+      console.log("TWO PLAYER GAME MODE");
+
+      document.querySelector(".game-mode-pick").classList.add("hidden");
+      randomWord = prompt("Enter a word to guess").toLowerCase();
+      gameModeSelect = false;
+      isTwoPlayer = true;
+      cw(randomWord); // DEBUGGING
+
+      console.error(gameModeSelect); // DEBUGGING
+      console.error(randomWord); // DEBUGGING
+      // run game for single player
+      startGame();
+    });
+  }
 };
 
+// if (gameModeSelect === false) {
+//   startGame();
+// }
+
+function startGame() {
+  init();
+  cw("Init running"); // DEBUGGING
+  gameLoop();
+  cw("Game loop running"); // DEBUGGING
+  restartGame();
+  cw("Restart btn running"); // DEBUGGING
+
+  console.error(gameModeSelect); // DEBUGGING
+  console.error(randomWord); // DEBUGGING
+}
+
+gameInfo();
+cw("Game info running"); // DEBUGGING
 gameMode();

@@ -1,120 +1,112 @@
 export const wordList = [
-  // A
-  "aria",
-  "anomaly",
-  "architect",
+  // // A
+  // "aria",
+  // "anomaly",
+  // "architect",
+  // // B
+  // "bandwagon",
+  // "banjo",
+  // "beekeeper",
+  // "blizzard",
+  // "buzzing",
+  // "buzzwords",
+  // "bookworm",
+  // "bulldog",
+  // "bullshit",
+  // "bully",
+  // "butterfly",
+  // // C
+  // "caliph",
+  // "cobweb",
+  // "croquet",
+  // "cycle",
+  // "crypt",
+  // "cockiness",
+  // "cockroach",
+  // "cocktail",
+  // // D
+  // "daddy",
+  // "deer",
+  // "delight",
+  // "delightful",
+  // "delightfulness",
+  // "delighting",
+  // "duplex",
+  // // E
+  // "elephant",
+  // // F
+  // "fashion",
+  // "fashionable",
+  // "fashionably",
+  // // G
+  // "gabby",
+  // "galaxy",
+  // "gizmo",
+  // "gnarly",
+  // "gossip",
+  // "grogginess",
+  // "gazebo",
+  // // H
+  // "haircut",
+  // "haircutter",
+  // // I
+  // "insects",
+  // "insecticide",
+  // // M
+  // "meagan",
+  // "milkshake",
+  // "moo",
+  // "muffin",
+  // "muffler",
+  // "mushroom",
+  // // S
+  // "scratch",
+  // "shiv",
+  // "snazzy",
+  // "sphinx",
+  // "spritz",
+  // "squawk",
+  // "staff",
+  // "strength",
+  // "strengths",
+  // "stretch",
+  // "stronghold",
+  // "subway",
+  // // T
+  // "truce",
+  // "taco",
+  // "tutu",
+  // // V
+  // "vaporize",
+  // "vixen",
+  // "vodka",
+  // "voodoo",
+  // "vortex",
+  // // Z
+  // "zoo",
+  // "zombie",
+  // "zooming",
+  // "zoom",
+  // "zephyr",
+  // "zigzag",
+  // "zigzagging",
+  // "zilch",
+  // "zipper",
+  // "zodiac",
+  //// EASY
+  ["e", "x", "z", "y", "v"],
 
-  // B
-  "bandwagon",
-  "banjo",
-  "beekeeper",
-  "blizzard",
-  "buzzing",
-  "buzzwords",
-  "bookworm",
-  "bulldog",
-  "bullshit",
-  "bully",
-  "butterfly",
-
-  // C
-  "caliph",
-  "cobweb",
-  "croquet",
-  "cycle",
-  "crypt",
-  "cockiness",
-  "cockroach",
-  "cocktail",
-
-  // D
-  "daddy",
-  "deer",
-  "delight",
-  "delightful",
-  "delightfulness",
-  "delighting",
-  "duplex",
-
-  // E
-  "elephant",
-
-  // F
-  "fashion",
-  "fashionable",
-  "fashionably",
-
-  // G
-  "gabby",
-  "galaxy",
-  "gizmo",
-  "gnarly",
-  "gossip",
-  "grogginess",
-  "gazebo",
-
-  // H
-  "haircut",
-  "haircutter",
-
-  // I
-  "insects",
-  "insecticide",
-
-  // M
-  "meagan",
-  "milkshake",
-  "moo",
-  "muffin",
-  "muffler",
-  "mushroom",
-
-  // S
-  "scratch",
-  "shiv",
-  "snazzy",
-  "sphinx",
-  "spritz",
-  "squawk",
-  "staff",
-  "strength",
-  "strengths",
-  "stretch",
-  "stronghold",
-  "subway",
-
-  // T
-  "truce",
-  "taco",
-  "tutu",
-
-  // V
-  "vaporize",
-  "vixen",
-  "vodka",
-  "voodoo",
-  "vortex",
-
-  // Z
-  "zoo",
-  "zombie",
-  "zooming",
-  "zoom",
-  "zephyr",
-  "zigzag",
-  "zigzagging",
-  "zilch",
-  "zipper",
-  "zodiac",
+  // HARD
+  ["h", "b", "g", "k", "r"],
 ];
 
 //// CREATING FOR FUTURE FEATURE (KID AND ADULT MODE)
-const kids = [
+export const easyWordList = [
   // ANIMALS
-  "kids",
-  // "dog",
-  // "cat",
-  // "bird",
+  "e",
+  "a",
+  "s",
+  "y",
   // "fox",
   // "horse",
   // "sheep",
@@ -157,41 +149,41 @@ const kids = [
   // "milk",
 ];
 
-const adults = [
+export const hardWordList = [
   // A
-  "Adult",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
+  "h",
+  "a",
+  "r",
+  "d",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
+  // "",
   // B
   // C
   // D
