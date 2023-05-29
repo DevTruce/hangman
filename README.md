@@ -55,7 +55,9 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](product-link)
+[![Hangman Screenshot][product-screenshot1]](product-link)
+[![Hangman Screenshot][product-screenshot2]](product-link)
+[![Hangman Screenshot][product-screenshot3]](product-link)
 
 The classic hangman game! I had a blast building this project and I came across several challenges that in the end made me a stronger developer! This has been my favorite project so far and I am excited to make it even better in the future!
 
@@ -137,7 +139,9 @@ Discord: [Xzypher#9999]()
 
 <!-- ## Project ## -->
 
-[product-screenshot]: src/imgs/Screenshot.png
+[product-screenshot1]: src/imgs/screenshot1.png
+[product-screenshot2]: src/imgs/screenshot2.png
+[product-screenshot3]: src/imgs/screenshot3.png
 [product-link]: https://devtruce.github.io/hangman/
 
 <!-- ## Tech & Tools ## -->
