@@ -206,8 +206,7 @@ main {
   margin-bottom: 0.5rem;
 }
 .btn:hover, .btn:focus {
-  width: 15.2rem;
-  height: 2.2rem;
+  scale: 105%;
   background-color: #27374d;
   color: #03c988;
   cursor: pointer;
@@ -215,10 +214,10 @@ main {
 }
 @keyframes scaleUp {
   0% {
-    transform: scale(1);
+    transform: scale(98%);
   }
   100% {
-    transform: scale(1.01);
+    transform: scale(100%);
   }
 }
 .btn:active {
@@ -226,10 +225,10 @@ main {
 }
 @keyframes scaleDown {
   0% {
-    transform: scale(1.01);
+    transform: scale(100%);
   }
   100% {
-    transform: scale(0.98);
+    transform: scale(98%);
   }
 }
 .btn--restart-game {
@@ -331,6 +330,10 @@ main {
   padding: 0.5rem 1rem;
   border-radius: 0.2rem;
   color: #f9f5f6;
+}
+
+.red {
+  background-color: crimson;
 }
 
 /*# sourceMappingURL=style.comp.css.map */
