@@ -37,6 +37,7 @@ const wordListPickHardWords = document.querySelector(
   ".word-list-pick--hard-words"
 );
 const reveal = document.querySelector(".btn--reveal");
+const revealLetterStyling = document.querySelector(".btn--reveal");
 
 //// LIST OF RANDOM WORDS
 import { easyWordList, hardWordList } from "./wordList.js";
@@ -169,9 +170,6 @@ const gameLogic = function () {
             }
             //// UPDATE PREVIOUS GUESSES DISPLAY
             displayPrevious.textContent = `Previous: ${previousGuesses}`;
-
-            //// CHECK IF THE GAME IS OVER
-            // checkGameOver();
           }
           //// CHECK IF USER INPUTS INCORRECT GUESS
         } else {
@@ -188,8 +186,6 @@ const gameLogic = function () {
             .querySelector(`.stage${incorrectGuesses}`)
             .classList.remove("hidden");
 
-          checkGameOver();
-
           //   cw(`Incorrect: ${incorrectGuesses}`); // DEBUGGING
         }
       }
@@ -205,17 +201,17 @@ const gameLoop = function () {
     //// CHECK IF USER PRESSED ENTER & STORE THE GUESS IF TRUE
     if (enter.key === "Enter") {
       userGuess = displayGuessInput.value.toLowerCase();
-
       displayGuessInput.value = ""; // clear input box after user pressed enter
+      // revealLetterStyle(); // check if user can use the reveal letter button
 
-      cw(`User Guessssss: ${userGuess}`);
       //   cw(`User Guess: ${userGuess}`); // DEBUGGING
 
       gameLogic();
+      revealLetterStyle(); // check if user can use the reveal letter button
     }
   });
 
-  checkGameOver();
+  // checkGameOver();
 };
 
 /////////////////////////////////////////////////
@@ -229,6 +225,7 @@ const checkGameOver = function () {
 
     wins += 1; // increment wins
     coins += 2;
+    cw(coins);
     gamesPlayed += 1; // increment games played
     totalGames.textContent = `Games Played: ${gamesPlayed}`;
     TotalWins.textContent = `Total Wins: ${wins}`;
@@ -250,12 +247,12 @@ const checkGameOver = function () {
     stage6.style.backgroundColor = "#98D8AA";
 
     //// PLAYER HAS LOST THE GAME
-  } else if (incorrectGuesses === 6) {
+  } else if (incorrectGuesses == 6) {
     setTimeout(function () {
       alert(`🆘 You Lost! The Answer was: ${randomWord}`);
     }, 500);
 
-    gamesPlayed += 1;
+    gamesPlayed = gamesPlayed + 1;
     totalGames.textContent = `Games Played: ${gamesPlayed}`;
     TotalWins.textContent = `Total Wins: ${wins}`;
     // cw(`Games Played: ${gamesPlayed}`); // DEBUGGING
@@ -278,9 +275,22 @@ const checkGameOver = function () {
 };
 
 /////////////////////////////////////////////////
+//// REVEAL A LETTER (STYLING)
+
+const revealLetterStyle = function () {
+  if (coins >= 1) {
+    revealLetterStyling.classList.remove("red");
+  } else if (coins <= 0) {
+    revealLetterStyling.classList.add("red");
+  }
+};
+
+/////////////////////////////////////////////////
 //// REVEAL A LETTER
 const revealLetter = function () {
   reveal.addEventListener("click", function () {
+    revealLetterStyle(); // check if user can use the reveal letter button
+
     if (coins >= 1) {
       let randomLetterFromRandomWord =
         randomWord[Math.trunc(Math.random() * randomWord.length)];
@@ -302,6 +312,8 @@ const revealLetter = function () {
 /////////////////////////////////////////////////
 //// RESTART GAME
 const restartGame = function () {
+  revealLetterStyle(); // check if user can use the reveal letter button
+
   //// REMOVE BLANKS FROM THE DISPLAY
   btnRestartGame.addEventListener("click", function () {
     for (let i = 0; i < randomWord.length; i++) {
@@ -429,9 +441,10 @@ const startGame = function () {
 /////////////////////////////////////////////////
 //// START THE GAME
 gameInfo();
-// cw("Game info running"); // DEBUGGING
-
-gameMode();
-// cw("Gamemode running"); // DEBUGGING
+// cw("gameInfo running"); // DEBUGGING
 
 revealLetter();
+// cw("revealLetter running"); // DEBUGGING
+
+gameMode();
+// cw("gameMode running"); // DEBUGGING
