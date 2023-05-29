@@ -312,11 +312,9 @@ const restartGame = function () {
     if (isTwoPlayer) {
       avgGuess();
       twoPlayerInit();
-      gamesPlayed += 1;
     } else {
       avgGuess();
       onePlayerInit();
-      gamesPlayed += 1;
     }
   });
 };
