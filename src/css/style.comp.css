@@ -330,6 +330,7 @@ main {
   padding: 0.5rem 1rem;
   border-radius: 0.2rem;
   color: #f9f5f6;
+  cursor: pointer;
 }
 
 .red {
