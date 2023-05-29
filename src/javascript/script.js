@@ -136,6 +136,7 @@ const twoPlayerInit = function () {
 const gameLogic = function () {
   //// CHECK IF THE GAME STATE IS ON (IS THE GAME RUNNING?)
   if (gameIsOn) {
+    revealLetter();
     // cw(`Coins: ${coins}`); // DEBUGGING
     // cw(`Random Word: ${randomWord}`); // DEBUGGING
 
@@ -290,23 +291,21 @@ const revealLetter = function () {
   reveal.addEventListener("click", function () {
     revealLetterStyle(); // check if user can use the reveal letter button
 
-    if (gameIsOn) {
-      if (coins >= 1) {
-        let randomLetterFromRandomWord =
-          randomWord[Math.trunc(Math.random() * randomWord.length)]; // display random letter from random word
+    if (coins >= 1) {
+      let randomLetterFromRandomWord =
+        randomWord[Math.trunc(Math.random() * randomWord.length)]; // display random letter from random word
 
-        if (!previousGuesses.includes(randomLetterFromRandomWord)) {
-          coins -= 1;
-          totalCoins.textContent = `Coins: ${coins}`; // update total coins display
-          userGuess = randomLetterFromRandomWord.toLowerCase();
-          cw(`Random Letter From Random Word: ${randomLetterFromRandomWord}`);
-          cw(`Coins: ${coins}`);
-        }
-
-        gameLogic();
-      } else {
-        alert("🌕 You have no coins! Win a game to gain coins!");
+      if (!previousGuesses.includes(randomLetterFromRandomWord)) {
+        coins -= 1;
+        totalCoins.textContent = `Coins: ${coins}`; // update total coins display
+        userGuess = randomLetterFromRandomWord.toLowerCase();
+        cw(`Random Letter From Random Word: ${randomLetterFromRandomWord}`);
+        cw(`Coins: ${coins}`);
       }
+
+      gameLogic();
+    } else {
+      alert("🌕 You have no coins! Win a game to gain coins!");
     }
   });
 };
@@ -444,9 +443,6 @@ const startGame = function () {
 //// START THE GAME
 gameInfo();
 // cw("gameInfo running"); // DEBUGGING
-
-revealLetter();
-// cw("revealLetter running"); // DEBUGGING
 
 gameMode();
 // cw("gameMode running"); // DEBUGGING
