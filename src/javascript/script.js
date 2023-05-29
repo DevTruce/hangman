@@ -38,6 +38,7 @@ const wordListPickHardWords = document.querySelector(
 );
 const reveal = document.querySelector(".btn--reveal");
 const revealLetterStyling = document.querySelector(".btn--reveal");
+const totalCoins = document.querySelector(".total-coins");
 
 //// LIST OF RANDOM WORDS
 import { easyWordList, hardWordList } from "./wordList.js";
@@ -64,7 +65,7 @@ let randomWord,
 
 const avgGuess = function () {
   // calc avg guess
-  avgGuesses = totalGuesses / correctGuesses; // average guesses it takes the user to guess correctly
+  avgGuesses = Math.trunc(totalGuesses / correctGuesses); // average guesses it takes the user to guess correctly
   //   cw(`Average Guesses: ${avgGuesses}`); // DEBUGGING
 };
 
@@ -210,8 +211,6 @@ const gameLoop = function () {
       revealLetterStyle(); // check if user can use the reveal letter button
     }
   });
-
-  // checkGameOver();
 };
 
 /////////////////////////////////////////////////
@@ -225,8 +224,8 @@ const checkGameOver = function () {
 
     wins += 1; // increment wins
     coins += 2;
-    cw(coins);
     gamesPlayed += 1; // increment games played
+    totalCoins.textContent = `Coins: ${coins}`;
     totalGames.textContent = `Games Played: ${gamesPlayed}`;
     TotalWins.textContent = `Total Wins: ${wins}`;
     // cw(`Games Played: ${gamesPlayed}`); // DEBUGGING
@@ -293,10 +292,11 @@ const revealLetter = function () {
 
     if (coins >= 1) {
       let randomLetterFromRandomWord =
-        randomWord[Math.trunc(Math.random() * randomWord.length)];
+        randomWord[Math.trunc(Math.random() * randomWord.length)]; // display random letter from random word
 
       if (!previousGuesses.includes(randomLetterFromRandomWord)) {
         coins -= 1;
+        totalCoins.textContent = `Coins: ${coins}`; // update total coins display
         userGuess = randomLetterFromRandomWord.toLowerCase();
         cw(`Random Letter From Random Word: ${randomLetterFromRandomWord}`);
         cw(`Coins: ${coins}`);
