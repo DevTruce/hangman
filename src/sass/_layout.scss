@@ -233,8 +233,7 @@ main {
   margin-bottom: 0.5rem;
   &:hover,
   &:focus {
-    width: 15.2rem;
-    height: 2.2rem;
+    scale: 105%;
     background-color: $colorGrey;
     color: $colorGreen;
     cursor: pointer;
@@ -242,10 +241,10 @@ main {
   }
   @keyframes scaleUp {
     0% {
-      transform: scale(1);
+      transform: scale(98%);
     }
     100% {
-      transform: scale(1.01);
+      transform: scale(100%);
     }
   }
 
@@ -254,10 +253,10 @@ main {
   }
   @keyframes scaleDown {
     0% {
-      transform: scale(1.01);
+      transform: scale(100%);
     }
     100% {
-      transform: scale(0.98);
+      transform: scale(98%);
     }
   }
 
