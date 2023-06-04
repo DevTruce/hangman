@@ -65,7 +65,7 @@ let randomWord,
 
 const avgGuess = function () {
   // calc avg guess
-  avgGuesses = Math.trunc(totalGuesses / correctGuesses); // average guesses it takes the user to guess correctly
+  avgGuesses = Math.trunc(totalGuesses / gamesPlayed); // average guesses it takes the user to guess correctly
   //   cw(`Average Guesses: ${avgGuesses}`); // DEBUGGING
 };
 
