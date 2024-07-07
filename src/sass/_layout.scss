@@ -1,7 +1,6 @@
 main {
   //   border: 2px solid white;
   height: 80vh;
-  width: 50vw;
 }
 
 .hidden {
@@ -14,6 +13,8 @@ main {
   display: flex;
   align-items: center;
   flex-direction: column;
+  width: 100%;
+  text-align: center;
 
   &__heading {
     color: $colorGreen;
@@ -29,16 +30,15 @@ main {
 //// HANGMAN GAME DISPLAY
 .display {
   display: flex;
-  margin-top: 3rem;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
   height: 80%;
 
   &__word {
     // border: 2px solid white;
-    width: 60%;
-    height: 100%;
+    width: 100%;
+    height: 90%;
 
     display: flex;
     flex-direction: column;
@@ -49,14 +49,11 @@ main {
       display: flex;
       align-items: center;
       justify-content: center;
-      //   justify-content: space-evenly;
-      //   margin-left: 1rem;
       margin: 3rem 0 2rem 0;
     }
 
     &-blanks {
       border-bottom: 2px solid $colorGreen;
-      //   height: 0.15rem;
       width: 1rem;
       margin-left: 0.25rem;
       display: flex;
@@ -71,38 +68,36 @@ main {
 
     &-box {
       display: flex;
-      //   transform: translateY(5rem);
     }
 
     &-box2 {
       display: flex;
       flex-direction: column;
-      //   margin-bottom: 0.5rem;
     }
 
-    &-guess-paragraph {
-    }
+    // &-guess-paragraph {
+    // }
 
-    &-guess-input {
-    }
+    // &-guess-input {
+    // }
   }
 
   &__hangman {
     // border: 2px solid white;
-    width: 40%;
-    height: 100%;
 
     position: relative;
+    top: 10rem;
+    left: -15%;
+    // transform: translate(-50%, -50%);
   }
 
   &__previous {
     font-weight: 900;
     letter-spacing: 0.2rem;
     align-self: center;
-    // position: absolute;
-    // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%, -50%);
+
+    position: relative;
+    top: -1.2rem;
   }
 }
 
@@ -111,7 +106,7 @@ main {
 
 // base
 .base {
-  width: 8rem;
+  width: 4rem;
   height: 0.4rem;
   background-color: $colorWhite;
 
@@ -122,101 +117,101 @@ main {
 
 .pole {
   width: 0.5rem;
-  height: 20rem;
+  height: 6rem;
   background-color: $colorWhite;
 
   position: absolute;
   bottom: -100%;
   left: 50%;
-  transform: translate(-50%, -2.5%);
+  transform: translate(-50%, -10%);
 }
 
 .top {
-  width: 6rem;
+  width: 4rem;
   height: 0.5rem;
   background-color: $colorWhite;
 
   position: absolute;
-  top: -20rem;
+  top: -5.8rem;
   left: 47%;
 }
 
 .drop {
   width: 0.4rem;
-  height: 3rem;
+  height: 0.8rem;
   background-color: $colorWhite;
 
   position: absolute;
-  top: -20rem;
-  left: 120%;
+  top: -5.7rem;
+  left: 137%;
 }
 
 // stage 1
 .stage1 {
-  outline: 0.3rem solid $colorWhite;
+  outline: 0.1rem solid $colorWhite;
   border-radius: 50%;
-  height: 3rem;
-  width: 3rem;
+  height: 1rem;
+  width: 1rem;
 
   position: absolute;
-  top: -16.8rem;
-  left: 102%;
+  top: -4.8rem;
+  left: 130%;
 }
 // stage 2
 .stage2 {
   background-color: $colorWhite;
-  height: 7rem;
-  width: 0.3rem;
+  height: 2rem;
+  width: 0.2rem;
 
   position: absolute;
-  top: -13.5rem;
-  left: 118%;
+  top: -3.7rem;
+  left: 140%;
 }
 // stage 3
 .stage3 {
   background-color: $colorWhite;
-  height: 4rem;
-  width: 0.3rem;
+  height: 1.5rem;
+  width: 0.1rem;
 
   position: absolute;
-  top: -14rem;
-  left: 99%;
+  top: -4.2rem;
+  left: 128%;
 
   transform: rotate(130deg);
 }
 // stage 4
 .stage4 {
   background-color: $colorWhite;
-  height: 4rem;
-  width: 0.3rem;
+  height: 1.5rem;
+  width: 0.1rem;
 
   position: absolute;
-  top: -14rem;
-  left: 138%;
+  top: -4.2rem;
+  left: 155%;
 
   transform: rotate(230deg);
 }
 // stage 5
 .stage5 {
   background-color: $colorWhite;
-  height: 4rem;
-  width: 0.3rem;
+  height: 1.7rem;
+  width: 0.1rem;
 
   position: absolute;
-  top: -7.5rem;
-  left: 97%;
+  top: -2.2rem;
+  left: 122%;
 
   transform: rotate(60deg);
 }
 // stage 6
 .stage6 {
   background-color: $colorWhite;
-  height: 4rem;
-  width: 0.3rem;
+  height: 1.7rem;
+  width: 0.1rem;
 
   position: absolute;
-  top: -7.3rem;
-  left: 136%;
+  top: -2.1rem;
+  left: 158%;
 
   transform: rotate(130deg);
 }
@@ -235,16 +230,10 @@ main {
   justify-content: center;
   text-transform: uppercase;
   font-weight: 700;
-  //   transition: all 500ms;
-
-  &:not(:last-child) {
-    margin-bottom: 1rem;
-  }
-
+  margin-bottom: 0.5rem;
   &:hover,
   &:focus {
-    width: 15.2rem;
-    height: 2.2rem;
+    scale: 105%;
     background-color: $colorGrey;
     color: $colorGreen;
     cursor: pointer;
@@ -252,10 +241,10 @@ main {
   }
   @keyframes scaleUp {
     0% {
-      transform: scale(1);
+      transform: scale(98%);
     }
     100% {
-      transform: scale(1.02);
+      transform: scale(100%);
     }
   }
 
@@ -264,11 +253,21 @@ main {
   }
   @keyframes scaleDown {
     0% {
-      transform: scale(1.02);
+      transform: scale(100%);
     }
     100% {
-      transform: scale(0.98);
+      transform: scale(98%);
     }
+  }
+
+  &--restart-game {
+    position: relative;
+    top: -4rem;
+  }
+
+  &--game-info {
+    position: relative;
+    top: -4rem;
   }
 }
 
@@ -280,10 +279,10 @@ main {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 70%;
-  color: $colorGrey;
+  color: $colorWhite;
   text-transform: uppercase;
   font-weight: 700;
-  background-color: white;
+  background-color: $colorGrey;
   padding: 6rem;
   border-radius: 5px;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
@@ -321,4 +320,64 @@ main {
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(3px);
   z-index: 5;
+}
+
+//////////////////////////////////////////////////
+//// GAME HELPERS
+.game-mode-pick {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: $colorGrey;
+  background-color: $colorGrey;
+  padding: 6rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.word-list-pick {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: $colorGrey;
+  background-color: $colorGrey;
+  padding: 6rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stats-box {
+  position: relative;
+  top: -6rem;
+  text-align: center;
+  //   height: auto;
+}
+
+.btn--reveal {
+  position: relative;
+  top: -1rem;
+  background-color: $colorGreen;
+  border: 1px solid $colorWhite;
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  color: $colorWhite;
+  cursor: pointer;
+}
+
+.red {
+  background-color: crimson;
 }

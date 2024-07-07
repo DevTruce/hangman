@@ -5,10 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/src/css/style.css" />
+    <link rel="icon" type="image/x-icon" href="/src/imgs/favicon.ico" />
+    <link rel="stylesheet" href="src/css/style.css" />
     <title>Hangman Game</title>
   </head>
   <body>
+    <aside class="game-mode-pick">
+      <div class="btn game-mode-pick--1player">Single Player</div>
+      <div class="btn game-mode-pick--2player">Two Players</div>
+    </aside>
+    <aside class="word-list-pick hidden">
+      <div class="btn word-list-pick--easy-words">Easy Words List</div>
+      <div class="btn word-list-pick--hard-words">Hard Words List</div>
+    </aside>
     <main>
       <header class="header">
         <h1 class="header__heading">Hangman Game</h1>
@@ -22,18 +31,18 @@
             <div class="pole"></div>
             <div class="top"></div>
             <div class="drop"></div>
-            <div class="stage1 hidden"></div>
-            <div class="stage2 hidden"></div>
-            <div class="stage3 hidden"></div>
-            <div class="stage4 hidden"></div>
-            <div class="stage5 hidden"></div>
-            <div class="stage6 hidden"></div>
+            <div class="stage1"></div>
+            <div class="stage2"></div>
+            <div class="stage3"></div>
+            <div class="stage4"></div>
+            <div class="stage5"></div>
+            <div class="stage6"></div>
           </div>
         </div>
         <div class="display__word">
           <div class="display__guess-box">
             <label for="display__guess-input" class="display__guess-paragraph"
-              >Guess a Letter: &nbsp;</label
+              >Guess: &nbsp;</label
             >
             <input id="display__guess-input" type="text" />
           </div>
@@ -45,20 +54,36 @@
         </div>
       </div>
     </main>
+    <div class="stats-box">
+      <button class="btn--reveal red">Reveal Letter</button>
+      <div class="total-coins">Coins: 0</div>
+      <div class="total-wins">Total Wins: 0</div>
+      <div class="total-games">Games Played: 0</div>
+      <div class="avg-guesses">Average Guesses: 0</div>
+    </div>
     <aside>
       <div class="btn btn--restart-game">RESTART GAME</div>
       <div class="btn btn--game-info">GAME INFO</div>
       <div class="popup popup-game-info hidden">
         <ol>
-          <li>Start guessing letters one at a time.</li>
           <li>
-            If your guess is a correct letter then we will fill in the blank
+            Select 1p or 2p! 2p will allow you to play locally with a friend!
+          </li>
+          <li>If you selected 1p then be sure to select your difficulty!</li>
+          <li>
+            Player 1 will create a secret word &amp; player 2 will try to guess
+            the word, one letter at a time!
           </li>
           <li>
-            If your guess is incorrect then we will draw the next stage of the
-            hangman
+            Correct guesses get displayed on screen and incorrect guesses get
+            punished by drawing out the next stage of hangman!
           </li>
           <li>Restart the game using the "Restart Game" Button</li>
+          <li>
+            Every win will grant you 2 coins, It cost 1 coin to use the "reveal"
+            button"
+          </li>
+          <li>ENJOY!</li>
         </ol>
         <div class="popup-exit">&times;</div>
       </div>
@@ -66,7 +91,8 @@
     </aside>
   </body>
   <!-- web version (to be made) -->
-  <script src="/src/javascript/script.js"></script>
+  <script type="module" src="src/javascript/wordList.js"></script>
+  <script type="module" src="src/javascript/script.js"></script>
 
   <!-- console version -->
   <!-- <script src="/src/javascript/consoleGame.js"></script> -->
