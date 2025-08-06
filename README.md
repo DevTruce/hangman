@@ -18,7 +18,7 @@
 <h3 align="center">Hangman</h3>
 
   <p align="center">
-    Hangman game built with HTML, CSS, and JavaScript.
+    Hangman game built with HTML, SCSS, and JavaScript.
     <br />
     <br />
     <a href="https://devtruce.github.io/hangman/" target="_blank">View Demo</a>
