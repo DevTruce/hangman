@@ -15,10 +15,10 @@
     <img src="src/imgs/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">hangman</h3>
+<h3 align="center">Hangman</h3>
 
   <p align="center">
-    Classic Hangman game
+    Hangman game built with HTML, CSS, and JavaScript.
     <br />
     <br />
     <a href="https://devtruce.github.io/hangman/" target="_blank">View Demo</a>
