@@ -18,7 +18,7 @@
 <h3 align="center">hangman</h3>
 
   <p align="center">
-    learning projects
+    Classic Hangman game
     <br />
     <br />
     <a href="https://devtruce.github.io/hangman/" target="_blank">View Demo</a>
@@ -26,6 +26,8 @@
 </div>
 
 <!-- ABOUT THE PROJECT -->
+## Details
+A browser based Hangman game built with HTML, CSS, and JavaScript. Includes difficulty levels, 1 or 2 player modes, and a simple coin system that lets players reveal a letter. A fun way to explore game logic, event handling, and interactive UI elements.
 
 ## Screenshots
 
